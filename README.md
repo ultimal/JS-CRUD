@@ -18,6 +18,7 @@ This library provides the following features:
 This library is designed to make it easy to integrate into existing web applications. To implement a CRUD, the following is required:
  - An empty *DIV*.
  - One line of Javascript code.
+ 
 This section covers common use scenarios.
 
 ### Simple Table
