@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+      <style>
+        .table tbody>tr>td { vertical-align: middle;}
+      </style>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="row">
+        <div id="server_roles" class="col-md-8">
+        </div>
+
+        <div id="comments" class="col-md-4">
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="server_locations" class="col-md-8">
+        </div>
+
+        <div id="comments" class="col-md-4">
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="access_roles" class="col-md-8">
+        </div>
+
+        <div id="comments" class="col-md-4">
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="user_names" class="col-md-8">
+        </div>
+
+        <div id="comments" class="col-md-4">
+        </div>
+      </div>
+      <div class="row">
+        <div id="server_list" class="col-md-8">
+        </div>
+
+        <div id="comments" class="col-md-4">
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+      integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+      crossorigin="anonymous">
+    </script>
+
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous">
+    </script>
+
+    <script src="jscrud.js"></script>
+
+    <script>
+      // Create a table for Server Roles
+      var server_roles = new CustomTable(
+        "server_roles",
+        "server_roles",
+        ["Role Name"],
+        [
+          ["role_name","text","Server Role Name"]
+        ],
+        "servers.update_field_data([\"role\",server_roles.item_list]);"
+      );
+
+      // Create a table for Server Locations
+      var server_locations = new CustomTable(
+        "server_locations",
+        "server_locations",
+        ["Site Name"],
+        [
+          ["site_name","text","Site Name"]
+        ],
+        "servers.update_field_data([\"site\",server_locations.item_list]);"
+      );
+
+      // Create a table for Access Roles
+      var access_roles = new CustomTable(
+        "access_roles",
+        "access_roles",
+        ["Access Role Name"],
+        [
+          ["access_role_name","text","Access Role Name"]
+        ],
+        "user_names.update_field_data([\"access_role_dd\",access_roles.item_list]);"
+      );
+
+      // Create a table for User Names
+      var user_names = new CustomTable(
+        "user_names",
+        "user_names",
+        ["User Name"],
+        [
+          ["user_name","text","User Name"],
+          ["access_role_dd","dropdown",""]
+        ],
+        ""
+      );
+
+      // Create a table for Servers
+      var servers = new CustomTable(
+        // Variable name for click events
+        "servers",
+        // Name of the div where to draw the table
+        "server_list",
+        // List of all the columns in the table
+        ["Server Name", "IP Address", "RAM in GB", "Site", "Role"],
+        // List of input fields to display
+        [
+          ["server_name","text","Server Name"],
+          ["ip_address","text","IP Address"],
+          ["ram","dropdown",["2GB","4GB","8GB"]],
+          ["site","dropdown",""],
+          ["role","dropdown",""]
+        ],
+        // Delegate function to be called whenever data is updated in table
+        ""
+      );
+
+    </script>
+
+  </body>
+</html>
